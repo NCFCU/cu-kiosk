@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Niagara’s Choice CU</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffffff, #f4f7fb);
+    text-align: center;
+}
+
+/* Header */
+.header {
+    padding: 25px;
+}
+
+.logo {
+    max-width: 320px;
+}
+
+/* Main container */
+.container {
+    max-width: 650px;
+    margin: auto;
+    padding-top: 30px;
+}
+
+/* Text */
+h1 {
+    color: #0b4ea2;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* Buttons */
+.button {
+    width: 90%;
+    padding: 22px;
+    margin: 15px auto;
+    font-size: 24px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    display: block;
+    transition: transform 0.15s ease;
+}
+
+/* Niagara colors */
+.account {
+    background-color: #0b4ea2;
+    color: white;
+}
+
+.loan {
+    background-color: #5dbb47;
+    color: white;
+}
+
+.button:active {
+    transform: scale(0.97);
+}
+
+/* Floating controls */
+.floating {
+    position: fixed;
+    top: 15px;
+    z-index: 9999;
+}
+
+#homeBtn {
+    left: 15px;
+    background: #333;
+    color: white;
+}
+
+#resetBtn {
+    right: 15px;
+    background: #a80000;
+    color: white;
+}
+
+.smallBtn {
+    padding: 10px 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    font-size: 13px;
+    color: gray;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating Buttons -->
+<button id="homeBtn" class="floating smallBtn" onclick="goHome()">🏠 Home</button>
+<button id="resetBtn" class="floating smallBtn" onclick="forceReset()">🔄 Reset</button>
+
+<div class="header">
+    <!-- Replace src with your hosted logo if needed -->
+    <img src="https://niagaraschoice.org/wp-content/uploads/elementor/thumbs/logo-qom23w83xhivixlxz3151r7vcxiymus0w56liypo1s.png" class="logo">
+</div>
+
+<div class="container">
+
+    <h1>Welcome 👋</h1>
+    <p>How can we help you today?</p>
+
+    <button class="button account"
+        onclick="goToLink('https://app.loanspq.com/apply.aspx?enc=Kw21Wblm1yxpjJabdoZaD5sJLp8ryF-XbEH06aUnsnmxZbAjvu97h8bRMluf7XK0Gley1upS6ljKXa9BGzJ1fQ')">
+        🏦 Open a New Account
+    </button>
+
+    <button class="button loan"
+        onclick="goToLink('LOAN_LINK_HERE')">
+        💰 Apply for a Loan
+    </button>
+
+</div>
+
+<div class="footer">
+    Please return the tablet to your representative when finished.
+</div>
+
+<script>
+/* ✅ Navigation */
+function goToLink(url) {
+    window.location.href = url;
+}
+
+function goHome() {
+    window.location.href = window.location.origin;
+}
+
+/* ✅ Force Reset Button (for MSRs) */
+function forceReset() {
+    window.location.reload(true);
+}
+
+/* ✅ INACTIVITY TIMER (IMPORTANT) */
+let timeout;
+const INACTIVITY_LIMIT = 120000; // 2 minutes
+
+function resetTimer() {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+        goHome();
+    }, INACTIVITY_LIMIT);
+}
+
+/* ✅ Events that reset the timer */
+document.onclick = resetTimer;
+document.onmousemove = resetTimer;
+document.onkeypress = resetTimer;
+document.ontouchstart = resetTimer;
+
+/* Start timer */
+resetTimer();
+
+</script>
+
+
