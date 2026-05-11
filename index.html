@@ -146,7 +146,7 @@ function goToLink(url) {
 }
 
 function goHome() {
-    window.location.href = window.location.origin;
+    window.location.href = "/";
 }
 
 /* ✅ Force Reset Button (for MSRs) */
@@ -170,6 +170,7 @@ document.onclick = resetTimer;
 document.onmousemove = resetTimer;
 document.onkeypress = resetTimer;
 document.ontouchstart = resetTimer;
+document.onscroll = resetTimer;
 
 /* Start timer */
 resetTimer();
